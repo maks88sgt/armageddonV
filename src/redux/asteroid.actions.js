@@ -80,7 +80,7 @@ function mapAsteroids (asteroids) {
                 kilometers: minKilometerRange,
                 lunar: minLunarRange,
             },
-            mainRangeDate: minRangeDate,
+            minRangeDate: minRangeDate,
         };
     });
 }
