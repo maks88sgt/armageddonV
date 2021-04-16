@@ -6,9 +6,10 @@
  ******************************************************************************/
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
-import {AsteroidsList} from "../AsteroidsList/AsteroidsList";
+
 import {Destroyment} from "../Destoyment/Destroyment";
 import {Asteroid} from "../Asteroid/Asteroid";
+import {AsteroidsListContainer} from "../AsteroidsList/AsteroidsList.container";
 
 
 export function AppRouter() {
@@ -17,7 +18,7 @@ export function AppRouter() {
         <Switch>
 
             <Route exact path="/asteroids">
-                <AsteroidsList/>
+                <AsteroidsListContainer/>
             </Route>
 
             <Route exact path="/destroyment">

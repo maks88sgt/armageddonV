@@ -1,9 +1,10 @@
 import React from "react";
+import {AsteroidCard} from "../AsteroidCard/AsteroidCard";
 
 export function AsteroidsList (props) {
-    return (
-        <>
-            <div> Asteroids </div>
-        </>
-    );
+    const { asteroids } = props;
+
+    const listOfAsteroids = asteroids.map((item, index) => <AsteroidCard key={index} {...item}/>);
+
+    return listOfAsteroids;
 }

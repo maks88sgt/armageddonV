@@ -1,4 +1,4 @@
-const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
+export const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
 
 export function initializedSuccess () {
