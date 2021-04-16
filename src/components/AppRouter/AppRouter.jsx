@@ -5,7 +5,7 @@
  * unless prior written permission is obtained from EPAM Systems, Inc
  ******************************************************************************/
 import React from 'react';
-import {Switch, Route,} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import {AsteroidsList} from "../AsteroidsList/AsteroidsList";
 import {Destroyment} from "../Destoyment/Destroyment";
 import {Asteroid} from "../Asteroid/Asteroid";
@@ -15,17 +15,27 @@ export function AppRouter() {
 
     return (
         <Switch>
+
             <Route exact path="/asteroids">
-                <AsteroidsList />
+                <AsteroidsList/>
             </Route>
 
-            <Route path="/destroyment">
+            <Route exact path="/destroyment">
                 <Destroyment />
             </Route>
 
             <Route path="/asteroids/:asteroidId">
                 <Asteroid/>
             </Route>
+
+            <Route exact path="/">
+                <Redirect to="/asteroids"/>
+            </Route>
+
+            <Route path="*">
+                <Redirect to="/asteroids"/>
+            </Route>
+
         </Switch>
     );
 }

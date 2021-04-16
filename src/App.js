@@ -1,18 +1,20 @@
+
+import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
+
 import './App.css';
+import {reduxStore} from "./config/configureRedux";
 import { Header } from "./components/Header/Header";
 import { AppRouter } from "./components/AppRouter/AppRouter";
-import {BrowserRouter} from "react-router-dom";
-
 
 function App() {
     return (
-        <>
             <BrowserRouter >
                 <Header/>
-                <AppRouter/>
+                <Provider store={reduxStore}>
+                    <AppRouter/>
+                </Provider>
             </BrowserRouter >
-        </>
-
     );
 }
 
