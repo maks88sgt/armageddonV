@@ -1,7 +1,12 @@
-import {createStore} from "redux";
+import {applyMiddleware, compose, createStore} from "redux";
+import thunk from "redux-thunk";
 
 import {asteroidReducer} from "../redux/asteroid.reducer";
 
-export const  reduxStore = createStore(asteroidReducer);
 
-window.store = reduxStore;
+const addReduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
+const enhancer = compose(applyMiddleware(thunk), addReduxDevTools);
+
+export const  reduxStore = createStore(asteroidReducer, enhancer);
+

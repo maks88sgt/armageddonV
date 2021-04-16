@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 
 import {AsteroidsList} from "./AsteroidsList";
+import {fetchAsteroidsData} from "../../../redux/asteroid.actions";
 
 const mapStateToProps = state => {
     return {
@@ -10,8 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        asteroids: state.asteroids,
+        fetchAsteroidsData: () => dispatch(fetchAsteroidsData()),
     };
 };
 
-export const AsteroidsListContainer = connect(mapStateToProps)(AsteroidsList);
+export const AsteroidsListContainer = connect(mapStateToProps, mapDispatchToProps)(AsteroidsList);
