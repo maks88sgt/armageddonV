@@ -1,4 +1,4 @@
-import axios from "axios";
+import { api } from "../api/AsteroidApi";
 
 export const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 export const FETCH_ASTEROIDS_DATA = 'FETCH_ASTEROIDS_DATA';
@@ -32,14 +32,55 @@ export function asteroidsDataFetchingError () {
 export function fetchAsteroidsData () {
     return dispatch => {
         dispatch(asteroidsDataFetchingStarted());
-        axios.get('https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-04-15&end_date=2021-04-22&api_key=DEMO_KEY')
+        api.getAsteroids()
             .then(res => {
                 dispatch(asteroidsDataFetchingFinished());
-                dispatch(saveFetchedData(res.data));
+                const asteroids = extractAsteroidsFromResponse(res.data);
+                const normalizedAsteroids = mapAsteroids(asteroids);
+                dispatch(saveFetchedData(normalizedAsteroids));
             })
-            .catch(() => {
+            .catch((err) => {
+                console.log(err);
                 dispatch(asteroidsDataFetchingError());
                 dispatch(asteroidsDataFetchingFinished());
             });
     }
+}
+
+function extractAsteroidsFromResponse (response) {
+    const asteroidsInDates = response.near_earth_objects;
+    let result = [];
+    for (let data in asteroidsInDates){
+        if (asteroidsInDates.hasOwnProperty(data)) {
+            result = result.concat(asteroidsInDates[data]);
+        }
+    }
+    return result;
+}
+
+function mapAsteroids (asteroids) {
+    return asteroids.map(item => {
+        const itemDiameter = (item.estimated_diameter.meters.estimated_diameter_min + item.estimated_diameter.meters.estimated_diameter_max)/2;
+        const minKilometerRange = [];
+        const minLunarRange = [];
+        const minRangeDate = [];
+
+        item.close_approach_data.forEach(item => {
+            minKilometerRange.push(Math.round(item.miss_distance.kilometers));
+            minLunarRange.push(Math.round(item.miss_distance.lunar));
+            minRangeDate.push(item.close_approach_date);
+        });
+
+        return {
+            name: item.name,
+            id: item.id,
+            isDangerous: item.is_potentially_hazardous_asteroid,
+            diameter: Math.round(itemDiameter),
+            minRange: {
+                kilometers: minKilometerRange,
+                lunar: minLunarRange,
+            },
+            mainRangeDate: minRangeDate,
+        };
+    });
 }
