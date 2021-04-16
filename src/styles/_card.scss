@@ -1,0 +1,25 @@
+/*!******************************************************************************
+ * Copyright (c) 2021 EPAM Systems, Inc. All Rights Reserved. All information contained herein is, and remains the
+ * property of EPAM Systems, Inc. and/or its suppliers and is protected by international intellectual
+ * property law. Dissemination of this information or reproduction of this material is strictly forbidden,
+ * unless prior written permission is obtained from EPAM Systems, Inc
+ ******************************************************************************/
+$card-padding: 30px;
+$img-height: 140px;
+$input-height: 16px;
+
+.asteroid-card {
+  & {
+    max-width: 920px;
+    height: 200px;
+    background: linear-gradient(90deg, #CFF37D 0%, #7DE88C 100%);
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+}
+
+.dangerous {
+  background: linear-gradient(90deg, #FFB199 0%, #FF0844 100%);
+}

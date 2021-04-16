@@ -1,14 +1,19 @@
 import React from "react";
-
-import styles from './AsteroidCard.module.css'
+import classNames from "classnames";
+import './../../../styles/_card.scss';
 
 export function AsteroidCard(props) {
     const {name, isDangerous, diameter, minRange, minRangeDate} = props;
 
     const dangerousLabel = isDangerous ? 'Опасен' : 'Не опасен';
 
+    const styles = classNames({
+        'asteroid-card': true,
+        'dangerous': isDangerous,
+    })
+
     return (
-        <div className={styles.container}>
+        <div className={styles}>
             <div className="leftBlock">
                 <img src='./../../../images/dino.svg' alt='dino'/>
             </div>
