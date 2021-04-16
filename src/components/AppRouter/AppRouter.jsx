@@ -8,8 +8,8 @@ import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 
 import {Destroyment} from "../Destoyment/Destroyment";
-import {Asteroid} from "../Asteroid/Asteroid";
-import {AsteroidsListContainer} from "../AsteroidsList/AsteroidsList.container";
+import {Asteroids} from "../AsteroidsComponent/Asteroids/Asteroids";
+import {AsteroidsListContainer} from "../AsteroidsComponent/AsteroidsList/AsteroidsList.container";
 
 
 export function AppRouter() {
@@ -18,15 +18,15 @@ export function AppRouter() {
         <Switch>
 
             <Route exact path="/asteroids">
-                <AsteroidsListContainer/>
+                <Asteroids/>
             </Route>
 
             <Route exact path="/destroyment">
-                <Destroyment />
+                <Destroyment/>
             </Route>
 
             <Route path="/asteroids/:asteroidId">
-                <Asteroid/>
+                <Asteroids/>
             </Route>
 
             <Route exact path="/">

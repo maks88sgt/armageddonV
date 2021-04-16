@@ -8,4 +8,10 @@ const mapStateToProps = state => {
     };
 };
 
+const mapDispatchToProps = dispatch => {
+    return {
+        asteroids: state.asteroids,
+    };
+};
+
 export const AsteroidsListContainer = connect(mapStateToProps)(AsteroidsList);
