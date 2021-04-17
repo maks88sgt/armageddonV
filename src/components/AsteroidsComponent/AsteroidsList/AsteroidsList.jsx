@@ -1,7 +1,9 @@
-import React, {useContext} from "react";
+import React, {useCallback, useContext, useEffect, useRef, useState} from "react";
+import './../../../styles/_list.scss';
 
 import {FilterContext} from "../Asteroids/Asteroids";
 import {AsteroidCardContainer} from "../AsteroidCard/AsteroidCard.container";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export function AsteroidsList (props) {
     let { asteroids } = props;
@@ -13,5 +15,22 @@ export function AsteroidsList (props) {
         asteroids = asteroids.filter (item => item.isDangerous);
     }
 
-    return asteroids.map((item, index) => <AsteroidCardContainer key={index} {...item}/>);
+    const [itemsCount, setItemsCount] = useState(10);
+
+    let listOfAsteroids = asteroids.slice(0,itemsCount);
+
+    function increaseLength() {
+        setItemsCount(itemsCount+10);
+        listOfAsteroids = asteroids.slice(0,itemsCount);
+    }
+
+    return (
+        <InfiniteScroll
+        dataLength={listOfAsteroids}
+        next={ increaseLength }
+        hasMore={ itemsCount <= asteroids.length }
+    >
+        {listOfAsteroids.map((item, index) => <AsteroidCardContainer key={index} {...item}/>)}
+    </InfiniteScroll>);
+
 }
