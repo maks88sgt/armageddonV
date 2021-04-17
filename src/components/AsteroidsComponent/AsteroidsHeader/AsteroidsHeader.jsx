@@ -1,10 +1,11 @@
-import { useState} from "react";
+import {useContext, useState} from "react";
 import classNames from "classnames";
 import './../../../styles/_distance.scss'
+import {FilterContext} from "../Asteroids/Asteroids";
 
 export function AsteroidsHeader() {
-    const [onlyDangerous, setOnlyDangerous] = useState(false);
-    const [distanceInKilometers , setDistanceInKilometers] = useState(true);
+    const context = useContext(FilterContext);
+    const {distanceInKilometers, setDistanceInKilometers, onlyDangerous, setOnlyDangerous} = context;
 
     const classForDistanceInKm = classNames({
         'kilometers': distanceInKilometers,
@@ -17,9 +18,10 @@ export function AsteroidsHeader() {
 
     return (
         <>
-            <div onClick={() => setOnlyDangerous(!onlyDangerous)}>
+            <div >
                 <input type="checkbox"
                        className="styled-checkbox_input"
+                       onChange={() => setOnlyDangerous(!onlyDangerous)}
                        checked={onlyDangerous}
                 />
                 Показать только опасные

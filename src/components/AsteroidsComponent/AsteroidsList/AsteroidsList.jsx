@@ -1,10 +1,16 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import {AsteroidCard} from "../AsteroidCard/AsteroidCard";
+import {FilterContext} from "../Asteroids/Asteroids";
 
 export function AsteroidsList (props) {
-    const { asteroids } = props;
+    let { asteroids } = props;
 
-    const listOfAsteroids = asteroids.map((item, index) => <AsteroidCard key={index} {...item}/>);
+    const context = useContext(FilterContext);
+    const { onlyDangerous } = context;
 
-    return listOfAsteroids;
+    if (onlyDangerous) {
+        asteroids = asteroids.filter (item => item.isDangerous);
+    }
+
+    return asteroids.map((item, index) => <AsteroidCard key={index} {...item}/>);
 }
