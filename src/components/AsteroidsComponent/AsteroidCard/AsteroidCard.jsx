@@ -4,7 +4,7 @@ import './../../../styles/_card.scss';
 import {FilterContext} from "../Asteroids/Asteroids";
 
 export function AsteroidCard(props) {
-    const {name, isDangerous, diameter, minRange, minRangeDate} = props;
+    const {id, name, isDangerous, diameter, minRange, minRangeDate, addAsteroidForDestroying} = props;
 
     const context = useContext(FilterContext);
     const { distanceInKilometers } = context;
@@ -32,7 +32,7 @@ export function AsteroidCard(props) {
             </div>
             <div className="">
                 <p>Оценка <span>{dangerousLabel}</span></p>
-                <button>На уничтожение</button>
+                <button onClick={() => addAsteroidForDestroying(id)}>На уничтожение</button>
             </div>
         </div>
     );

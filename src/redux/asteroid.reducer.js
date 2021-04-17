@@ -1,4 +1,5 @@
 import {
+    ADD_ASTEROID_FOR_DESTROYING,
     DATA_FETCHING_ERROR,
     DATA_FETCHING_FINISHED,
     DATA_FETCHING_STARTED,
@@ -10,6 +11,7 @@ class AsteroidStore {
     constructor() {
         this.initialized = false;
         this.asteroids = [];
+        this.forDestroying = [];
         this.isFetching = false;
         this.isFetchingError = false;
     }
@@ -46,6 +48,12 @@ export function asteroidReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetchingError: true,
+            }
+
+        case ADD_ASTEROID_FOR_DESTROYING:
+            return {
+                ...state,
+                forDestroying: [...state.forDestroying, action.payload],
             }
 
         default:

@@ -1,6 +1,7 @@
-import React, {useContext, useEffect} from "react";
-import {AsteroidCard} from "../AsteroidCard/AsteroidCard";
+import React, {useContext} from "react";
+
 import {FilterContext} from "../Asteroids/Asteroids";
+import {AsteroidCardContainer} from "../AsteroidCard/AsteroidCard.container";
 
 export function AsteroidsList (props) {
     let { asteroids } = props;
@@ -12,5 +13,5 @@ export function AsteroidsList (props) {
         asteroids = asteroids.filter (item => item.isDangerous);
     }
 
-    return asteroids.map((item, index) => <AsteroidCard key={index} {...item}/>);
+    return asteroids.map((item, index) => <AsteroidCardContainer key={index} {...item}/>);
 }

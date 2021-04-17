@@ -6,11 +6,16 @@ export const DATA_FETCHING_STARTED = 'DATA_FETCHING_STARTED';
 export const DATA_FETCHING_FINISHED = 'DATA_FETCHING_FINISHED';
 export const SAVE_FETCHED_DATA = 'SAVE_FETCHED_DATA';
 export const DATA_FETCHING_ERROR = 'DATA_FETCHING_ERROR';
+export const ADD_ASTEROID_FOR_DESTROYING = 'ADD_ASTEROID_FOR_DESTROYING';
 
 
 
 export function initializedSuccess () {
     return { type: INITIALIZED_SUCCESS };
+}
+
+export function addAsteroidForDestroying (payload) {
+    return {type: ADD_ASTEROID_FOR_DESTROYING, payload: payload};
 }
 
 export function asteroidsDataFetchingStarted () {
