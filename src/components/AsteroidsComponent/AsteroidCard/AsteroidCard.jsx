@@ -15,6 +15,8 @@ export function AsteroidCard(props) {
     const dangerousLabel = isDangerous ? 'Опасен' : 'Не опасен';
 
     const styles = classNames({
+        'col-md-4': true,
+        'col-sm-12': true,
         'asteroid-card': true,
         'dangerous': isDangerous,
     })
