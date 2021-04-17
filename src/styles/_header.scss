@@ -1,7 +1,14 @@
-.navLink:active {
+.header {
+  border-bottom: solid 1px black;
+}
+.activeNavLink {
   font-weight: bold;
+  color: black;
+  text-decoration: none;
 }
 
 .navLink {
-  background: #282c34;
+  color: black;
+  text-decoration: underline;
 }
+

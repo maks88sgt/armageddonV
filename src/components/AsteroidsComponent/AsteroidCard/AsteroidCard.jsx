@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import classNames from "classnames";
-import './../../../styles/_card.scss';
+import '../../../styles/_card.scss';
 import {FilterContext} from "../Asteroids/Asteroids";
 
 export function AsteroidCard(props) {

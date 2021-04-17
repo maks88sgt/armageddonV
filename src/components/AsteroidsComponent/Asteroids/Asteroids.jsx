@@ -1,7 +1,7 @@
 import React, {createContext, useEffect, useState} from "react";
 import {AsteroidsListContainer} from "../AsteroidsList/AsteroidsList.container";
 import {AsteroidsHeader} from "../AsteroidsHeader/AsteroidsHeader";
-import './../../../styles/_list.scss';
+import '../../../styles/_list.scss';
 import classNames from "classnames";
 
 export const FilterContext = createContext();

@@ -42,7 +42,7 @@ export function fetchAsteroidsData () {
                 dispatch(asteroidsDataFetchingFinished());
                 const asteroids = extractAsteroidsFromResponse(res.data);
                 const normalizedAsteroids = mapAsteroids(asteroids);
-                dispatch(saveFetchedData(normalizedAsteroids));
+                dispatch(saveFetchedData(normalizedAsteroids.reverse()));
             })
             .catch((err) => {
                 console.log(err);
