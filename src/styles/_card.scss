@@ -1,7 +1,7 @@
 .asteroid-card {
   & {
     max-width: 920px;
-    height: 200px;
+    min-height: 200px;
     background: linear-gradient(90deg, #CFF37D 0%, #7DE88C 100%);
     border: 1px solid #000000;
     box-sizing: border-box;

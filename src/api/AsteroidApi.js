@@ -16,7 +16,7 @@ class AsteroidApi {
     }
 }
 
-const API_TOKEN = 'ecdZUKJOYd6s7PADW1nXOHD5nhEuZefR6o5Sex1m';
+const API_TOKEN = '';
 
 export const api = new AsteroidApi(API_TOKEN);
 

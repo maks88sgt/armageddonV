@@ -19,13 +19,15 @@ export function AsteroidsHeader() {
     return (
         <div className='container sticky-top bg-white position-static'>
             <div className='row row-cols-md-2 row-cols-sm-1'>
-                <div className='col-md-6 col-sm-12'>
-                    <input type="checkbox"
-                           className="form-check-input"
+                <div className="form-check col-md-6 col-sm-12">
+                    <input className="form-check-input"
+                           type="checkbox"
                            onChange={() => setOnlyDangerous(!onlyDangerous)}
                            checked={onlyDangerous}
-                    />
-                    Показать только опасные
+                           id="flexCheckDefault"/>
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                            Показать только опасные
+                        </label>
                 </div>
                 <div className='col-md-6 col-sm-12'>
                     <p>Расстояние <span className={classForDistanceInKm} onClick={() => setDistanceInKilometers(true)}>в километрах</span>,
