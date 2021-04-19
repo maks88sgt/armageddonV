@@ -42,7 +42,7 @@ export function fetchAsteroidsData () {
                 dispatch(asteroidsDataFetchingFinished());
                 const asteroids = extractAsteroidsFromResponse(res.data);
                 const normalizedAsteroids = mapAsteroids(asteroids);
-                dispatch(saveFetchedData(normalizedAsteroids.reverse()));
+                dispatch(saveFetchedData(normalizedAsteroids.sort((a,b) => sortByDate(a,b))));
             })
             .catch((err) => {
                 console.log(err);
@@ -88,4 +88,8 @@ function mapAsteroids (asteroids) {
             minRangeDate: minRangeDate,
         };
     });
+}
+
+function sortByDate(a,b) {
+    return new Date(a.minRangeDate[0]) - new Date(b.minRangeDate[0]);
 }
