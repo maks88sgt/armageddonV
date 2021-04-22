@@ -3,30 +3,37 @@ import {
     DATA_FETCHING_ERROR,
     DATA_FETCHING_FINISHED,
     DATA_FETCHING_STARTED,
-    INITIALIZED_SUCCESS,
     SAVE_FETCHED_DATA
 } from "./asteroid.actions";
 
-class AsteroidStore {
-    constructor() {
-        this.initialized = false;
-        this.asteroids = [];
-        this.forDestroying = [];
-        this.isFetching = false;
-        this.isFetchingError = false;
-    }
+export type Asteroid = {
+    name: string,
+    id: string,
+    isDangerous: boolean,
+    diameter: number,
+    minRange: {
+        kilometers: number,
+        lunar: number,
+    },
+    minRangeDate: string,
 }
 
-const initialState = new AsteroidStore();
+type AsteroidStoreType = {
+        asteroids: Array<Asteroid>,
+        forDestroying: Array<string>,
+        isFetching: boolean,
+        isFetchingError: boolean,
+};
 
-export function asteroidReducer(state = initialState, action) {
+const initialState: AsteroidStoreType = {
+    asteroids:[],
+    forDestroying:[],
+    isFetching: false,
+    isFetchingError: false,
+}
+
+export function asteroidReducer(state: AsteroidStoreType = initialState, action: any): AsteroidStoreType {
     switch (action.type) {
-        case INITIALIZED_SUCCESS:
-            return {
-                ...state,
-                initialized: true,
-            };
-
         case DATA_FETCHING_STARTED:
             return {
                 ...state,
