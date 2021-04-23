@@ -4,7 +4,7 @@ import {AsteroidsList} from "./AsteroidsList";
 
 const mapStateToProps = state => {
     return {
-        asteroids: state.asteroids,
+        asteroids: state.asteroidReducer.asteroids,
     };
 };
 

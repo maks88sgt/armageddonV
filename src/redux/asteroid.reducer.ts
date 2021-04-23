@@ -18,7 +18,7 @@ export type Asteroid = {
     minRangeDate: string,
 }
 
-type AsteroidStoreType = {
+export type AsteroidStoreType = {
         asteroids: Array<Asteroid>,
         forDestroying: Array<string>,
         isFetching: boolean,

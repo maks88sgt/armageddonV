@@ -50,7 +50,7 @@ export function asteroidsDataFetchingError (): asteroidsDataFetchingErrorActionT
     return {type: DATA_FETCHING_ERROR}
 }
 
-export function fetchAsteroidsData () {
+export function fetchAsteroidsData (): any {
     return (dispatch: any) => {
         dispatch(asteroidsDataFetchingStarted());
         api.getAsteroids()
@@ -79,7 +79,7 @@ function extractAsteroidsFromResponse (response: any) {
     return result;
 }
 
-function mapAsteroids (asteroids: any) {
+function mapAsteroids (asteroids: any): Array<Asteroid> {
     return asteroids.map((item: any) => {
         const itemDiameter = (item.estimated_diameter.meters.estimated_diameter_min + item.estimated_diameter.meters.estimated_diameter_max)/2;
         const minKilometerRange: Array<number>= [];
@@ -106,7 +106,7 @@ function mapAsteroids (asteroids: any) {
     });
 }
 
-function sortByDate(a: Asteroid,b: Asteroid) {
+function sortByDate(a: Asteroid,b: Asteroid): number {
     return  Number(new Date(a.minRangeDate[0])) - Number(new Date(b.minRangeDate[0]));
 }
 
