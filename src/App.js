@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import {FunctionalComponent} from "./FunctionalComponent/FunctionalComponnt";
+import {ClassComponent} from "./ClassComponent/ClassComponent";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           Learn React
         </a>
       </header>
+      <FunctionalComponent/>
+      <ClassComponent/>
     </div>
   );
 }
